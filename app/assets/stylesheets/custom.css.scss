@@ -92,3 +92,9 @@ p {
   display:       block;
   margin:        10px auto;
 }
+
+.required label:after {
+    color: #e32;
+    content: ' *';
+    display:inline;
+}

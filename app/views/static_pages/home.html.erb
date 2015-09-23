@@ -6,6 +6,8 @@
 <p>
   This is the Home Page for <%= RentFeedback::Application::APP_NAME %>
 </p>
-<%= link_to   "Sign up now!", '#',
-              class: "btn btn-lg btn-primary",
-              id: 'signup' %>
+<% if !user_signed_in? %>
+  <%= link_to   "Sign up now!", 'users/sign_up',
+                class: "btn btn-lg btn-primary",
+                id: 'signup' %>
+<% end %>

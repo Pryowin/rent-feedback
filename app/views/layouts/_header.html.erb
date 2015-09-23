@@ -9,7 +9,14 @@
         <li><%= link_to "Help",     help_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Log In",   '#', id: "login" %></li>
+        <% if !user_signed_in? %>
+          <li><%= link_to "Log In",'/users/sign_in', id: "login" %></li>
+        <% else %>
+          <li><%= link_to "Logout", '/users/sign_out',
+                                    method: "delete",
+                                    id: "login" %>
+          </li>
+        <% end %>
       </ul>
     </nav>
   </div>
