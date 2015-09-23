@@ -22,12 +22,12 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: 3em;
   letter-spacing: -2px;
-  margin-bottom: 30px;
+  margin-bottom: 80px;
   text-align: center;
 }
 
 h2 {
-  font-size: 1.2em;
+  font-size: 2em;
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
@@ -39,6 +39,12 @@ p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
+
+.jumbotron {
+  background: url('background.jpg') no-repeat center center;
+  color: #000;
+}
+
 #logo {
   float: left;
   margin-right: 30px;
@@ -68,4 +74,21 @@ p {
   text-shadow:   1px 1px 0 #000;
   margin-top:    12px;
 
+}
+#signup {
+  padding:       6px 16px;
+  background:    -moz-linear-gradient(#3d85c6, #073763);
+  background:    -o-linear-gradient(#3d85c6, #073763);
+  background:    -webkit-linear-gradient(#3d85c6, #073763);
+  background:    linear-gradient(#3d85c6, #073763);
+  border-radius: 5px;
+  color:         #fff;
+  font:          normal 700 15px/1 "Calibri", sans-serif;
+  text-align:    center;
+  text-shadow:   1px 1px 0 #000;
+  margin-top:    12px;
+  float:         none;
+  width:         150px;
+  display:       block;
+  margin:        10px auto;
 }
