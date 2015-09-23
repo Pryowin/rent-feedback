@@ -21,6 +21,8 @@ gem 'turbolinks', '2.3.0'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'devise'
+
 #Create sample data
 gem 'faker'
 
