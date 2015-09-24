@@ -10,10 +10,12 @@ david:
   handle: "dmb"
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
   admin:  true
+  confirmed_at: <%= Time.now %>
 
 amber:
   name:   "Amber Burke"
   email:  "amber@amberfire.net"
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
   handle: "amber"
-  confirmed_at: <%= Date.today %>
+  admin:  false
+  confirmed_at: <%= Time.now %>
