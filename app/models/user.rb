@@ -1,3 +1,5 @@
+require 'obscenity/active_model'
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -12,10 +14,12 @@ class User < ActiveRecord::Base
 
   validates :handle,  presence: true,
                       length: {maximum: MAX_HANDLE_LENGTH},
-                      uniqueness: {case_sensitive: false}
+                      uniqueness: {case_sensitive: false},
+                      obscenity: true
 
   validates :name,  presence: true,
-                    length: {maximum: MAX_NAME_LENGTH}
+                    length: {maximum: MAX_NAME_LENGTH},
+                    obscenity: true
 
 
 

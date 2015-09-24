@@ -40,4 +40,15 @@ class UserTest < ActiveSupport::TestCase
     assert_not @other.valid?
   end
 
+  test "Handle must not be profane" do
+    @user.handle ="Shitface"
+    assert_not @user.valid?
+  end
+
+  test "Name must not be profane" do
+    @user.name ="Shitface"
+    assert_not @user.valid?
+  end
+
+
 end
