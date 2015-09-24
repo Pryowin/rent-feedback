@@ -5,3 +5,30 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+79.times do
+  Building.create!( street_address:  Faker::Address.street_address,
+                    city:            Faker::Address.city,
+                    state:           Faker::Address.state_abbr,
+                    postal_code:     Faker::Address.zip,
+                    country:         "US"
+                  )
+end
+
+10.times do
+  Building.create!( street_address:  Faker::Address.street_address,
+                    city:            "Redding",
+                    state:           "CA",
+                    postal_code:     "96001",
+                    country:         "US"
+                  )
+end
+
+10.times do
+  Building.create!( street_address:  Faker::Address.street_address,
+                    city:            "Redding",
+                    state:           "CA",
+                    postal_code:     "96003",
+                    country:         "US"
+                  )
+end

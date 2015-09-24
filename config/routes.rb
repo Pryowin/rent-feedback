@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :buildings
   devise_for :users
   get 'users/new'
 

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Street address:</strong>
+  <%= @building.street_address %>
+</p>
+
+<p>
+  <strong>Street address 2:</strong>
+  <%= @building.street_address_2 %>
+</p>
+
+<p>
+  <strong>Street address3:</strong>
+  <%= @building.street_address3 %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @building.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @building.state %>
+</p>
+
+<p>
+  <strong>Postal code:</strong>
+  <%= @building.postal_code %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @building.country %>
+</p>
+
+<%= link_to 'Edit', edit_building_path(@building) %> |
+<%= link_to 'Back', buildings_path %>
