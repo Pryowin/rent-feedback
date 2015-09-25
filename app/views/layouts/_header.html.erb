@@ -13,11 +13,14 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if !user_signed_in? %>
-          <li><%= link_to "Log In",'/users/sign_in', id: "login" %></li>
+          <li>  <%= link_to   "Log In",
+                              'users/sign_in',
+                              class: "btn btn-primary" %>
+          </li>
         <% else %>
           <li><%= link_to "Logout", '/users/sign_out',
                                     method: "delete",
-                                    id: "login" %>
+                                    class: "btn btn-primary" %>
           </li>
         <% end %>
       </ul>

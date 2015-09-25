@@ -2,12 +2,12 @@
 <div class="center jumbotron">
   <h1><%= RentFeedback::Application::APP_NAME %></h1>
   <h2>Building Trust Between Renters and Landlords</h2>
+  <% if !user_signed_in? %>
+    <%= link_to   "Sign up now!", 'users/sign_up',
+                  class: "btn btn-block btn-default" %>
+  <% end %>
+
 </div>
 <p>
   This is the Home Page for <%= RentFeedback::Application::APP_NAME %>
 </p>
-<% if !user_signed_in? %>
-  <%= link_to   "Sign up now!", 'users/sign_up',
-                class: "btn btn-lg btn-primary",
-                id: 'signup' %>
-<% end %>

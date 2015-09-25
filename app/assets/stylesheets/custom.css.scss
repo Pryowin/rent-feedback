@@ -32,7 +32,7 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: #777;
+  color: #fff;
 }
 
 p {
@@ -42,7 +42,7 @@ p {
 
 .jumbotron {
   background: url('background.jpg') no-repeat center center;
-  color: #000;
+  color: #fff;
 }
 
 #logo {
@@ -59,38 +59,6 @@ p {
 #logo:hover {
   color: #fff;
   text-decoration: none;
-}
-#login {
-  display:       inline-block;
-  padding:       6px 16px;
-  background:    -moz-linear-gradient(#3d85c6, #073763);
-  background:    -o-linear-gradient(#3d85c6, #073763);
-  background:    -webkit-linear-gradient(#3d85c6, #073763);
-  background:    linear-gradient(#3d85c6, #073763);
-  border-radius: 5px;
-  color:         #fff;
-  font:          normal 700 15px/1 "Calibri", sans-serif;
-  text-align:    center;
-  text-shadow:   1px 1px 0 #000;
-  margin-top:    12px;
-
-}
-#signup {
-  padding:       6px 16px;
-  background:    -moz-linear-gradient(#3d85c6, #073763);
-  background:    -o-linear-gradient(#3d85c6, #073763);
-  background:    -webkit-linear-gradient(#3d85c6, #073763);
-  background:    linear-gradient(#3d85c6, #073763);
-  border-radius: 5px;
-  color:         #fff;
-  font:          normal 700 15px/1 "Calibri", sans-serif;
-  text-align:    center;
-  text-shadow:   1px 1px 0 #000;
-  margin-top:    12px;
-  float:         none;
-  width:         150px;
-  display:       block;
-  margin:        10px auto;
 }
 
 .required label:after {

@@ -10,6 +10,7 @@ gem 'fog'
 
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'will_paginate-bootstrap'
 
 gem 'bootstrap-sass'
 gem 'sass-rails', '4.0.3'
