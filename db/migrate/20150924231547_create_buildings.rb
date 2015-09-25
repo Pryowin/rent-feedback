@@ -11,5 +11,11 @@ class CreateBuildings < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    add_index :buildings, :country
+    add_index :buildings, :state
+    add_index :buildings, :city
+    add_index :buildings, [:country, :state, :city]
+
   end
 end

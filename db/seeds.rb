@@ -6,6 +6,16 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+
+User.create!(  name:                "David Burke",
+              email:               "dburke@amberfire.net",
+              handle:              "Pyrowin",
+              admin:               true,
+              renter:              true,
+              password:            "foorbar65",
+              confirmed_at:        Time.now
+            )
+
 79.times do
   Building.create!( street_address:  Faker::Address.street_address,
                     city:            Faker::Address.city,

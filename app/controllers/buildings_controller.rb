@@ -4,7 +4,7 @@ class BuildingsController < ApplicationController
   # GET /buildings
   # GET /buildings.json
   def index
-    @buildings = Building.all
+    @buildings =  Building.paginate(page: params[:page])
   end
 
   # GET /buildings/1
@@ -69,6 +69,6 @@ class BuildingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def building_params
-      params.require(:building).permit(:street_address, :street_address_2, :street_address3, :city, :state, :postal_code, :country)
+      params.require(:building).permit(:street_address, :street_address_2, :street_address_3, :city, :state, :postal_code, :country)
     end
 end

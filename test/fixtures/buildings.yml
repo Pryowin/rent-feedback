@@ -3,7 +3,7 @@
 one:
   street_address: MyString
   street_address_2: 
-  street_address3: MyString
+  street_address_3: MyString
   city: MyString
   state: MyString
   postal_code: MyString
@@ -12,7 +12,7 @@ one:
 two:
   street_address: MyString
   street_address_2: 
-  street_address3: MyString
+  street_address_3: MyString
   city: MyString
   state: MyString
   postal_code: MyString

@@ -25,6 +25,11 @@ ActiveRecord::Schema.define(version: 20150924231547) do
     t.datetime "updated_at",       null: false
   end
 
+  add_index "buildings", ["city"], name: "index_buildings_on_city"
+  add_index "buildings", ["country", "state", "city"], name: "index_buildings_on_country_and_state_and_city"
+  add_index "buildings", ["country"], name: "index_buildings_on_country"
+  add_index "buildings", ["state"], name: "index_buildings_on_state"
+
   create_table "users", force: :cascade do |t|
     t.string   "name",                                   null: false
     t.string   "handle",                                 null: false

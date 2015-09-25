@@ -1,6 +1,9 @@
 require 'test_helper'
 
 class BuildingsControllerTest < ActionController::TestCase
+
+  include Devise::TestHelpers
+
   setup do
     @building = buildings(:one)
   end
@@ -18,7 +21,7 @@ class BuildingsControllerTest < ActionController::TestCase
 
   test "should create building" do
     assert_difference('Building.count') do
-      post :create, building: { city: @building.city, country: @building.country, postal_code: @building.postal_code, state: @building.state, street_address3: @building.street_address3, street_address: @building.street_address, street_address_2: @building.street_address_2 }
+      post :create, building: { city: @building.city, country: @building.country, postal_code: @building.postal_code, state: @building.state, street_address_3: @building.street_address_3, street_address: @building.street_address, street_address_2: @building.street_address_2 }
     end
 
     assert_redirected_to building_path(assigns(:building))
@@ -35,7 +38,7 @@ class BuildingsControllerTest < ActionController::TestCase
   end
 
   test "should update building" do
-    patch :update, id: @building, building: { city: @building.city, country: @building.country, postal_code: @building.postal_code, state: @building.state, street_address3: @building.street_address3, street_address: @building.street_address, street_address_2: @building.street_address_2 }
+    patch :update, id: @building, building: { city: @building.city, country: @building.country, postal_code: @building.postal_code, state: @building.state, street_address_3: @building.street_address_3, street_address: @building.street_address, street_address_2: @building.street_address_2 }
     assert_redirected_to building_path(assigns(:building))
   end
 
