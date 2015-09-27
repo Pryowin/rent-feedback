@@ -1,5 +1,12 @@
 class BuildingsController < ApplicationController
+
+  include Sessions
+
   before_action :set_building, only: [:show, :edit, :update, :destroy]
+  before_action :requires_authenticated_user,
+                only: [:new, :create, :edit, :update, :destroy]
+  before_action :requires_admin_user,
+                only: [:edit, :update, :destroy]
 
   # GET /buildings
   # GET /buildings.json
@@ -10,6 +17,12 @@ class BuildingsController < ApplicationController
   # GET /buildings/1
   # GET /buildings/1.json
   def show
+    # if !Building.exists?(params[:id])
+    #   redirect_to buildings_path
+    # end
+    if @building.nil?
+      redirect_to buildings_path
+    end
   end
 
   # GET /buildings/new
@@ -64,7 +77,9 @@ class BuildingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_building
-      @building = Building.find(params[:id])
+      if Building.exists?(params[:id])
+        @building = Building.find(params[:id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
