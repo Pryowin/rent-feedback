@@ -11,7 +11,17 @@ class BuildingsController < ApplicationController
   # GET /buildings
   # GET /buildings.json
   def index
-    @buildings =  Building.paginate(page: params[:page])
+    if params[:search].empty?
+      @buildings =  Building.paginate(page: params[:page])
+    else
+      if !params[:search].match(/[^0-9]/)
+        @buildings =  Building.where("postal_code=(?)",params[:search])
+      else
+        search = params[:search].downcase
+        @buildings =  Building.where("lower(city)=? OR upper(state)=? OR lower(street_name) like(?)",
+                                    search, search.upcase, search+"%").paginate(page: params[:page])
+      end
+    end
   end
 
   # GET /buildings/1
