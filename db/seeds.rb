@@ -12,13 +12,14 @@ User.create!(  name:                "David Burke",
               handle:              "Pyrowin",
               admin:               true,
               renter:              true,
-              password:            "foorbar65",
+              password:            "foobar65",
               confirmed_at:        Time.now
             )
 
 79.times do
-  Building.create!( street_address:  Faker::Address.street_address,
+  Building.create!( street_name:     Faker::Address.street_name,
                     city:            Faker::Address.city,
+                    building_number: Faker::Address.building_number,
                     state:           Faker::Address.state_abbr,
                     postal_code:     Faker::Address.zip,
                     country:         "US"
@@ -26,7 +27,8 @@ User.create!(  name:                "David Burke",
 end
 
 10.times do
-  Building.create!( street_address:  Faker::Address.street_address,
+  Building.create!( street_name:     Faker::Address.street_name,
+                    building_number: Faker::Address.building_number,
                     city:            "Redding",
                     state:           "CA",
                     postal_code:     "96001",
@@ -35,7 +37,8 @@ end
 end
 
 10.times do
-  Building.create!( street_address:  Faker::Address.street_address,
+  Building.create!( street_name:     Faker::Address.street_name,
+                    building_number: Faker::Address.building_number,
                     city:            "Redding",
                     state:           "CA",
                     postal_code:     "96003",

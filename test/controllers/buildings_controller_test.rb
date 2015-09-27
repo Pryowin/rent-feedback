@@ -31,17 +31,31 @@ class BuildingsControllerTest < ActionController::TestCase
   test "should create building" do
     sign_in @user
     assert_difference('Building.count') do
-      post :create, building: { city: @building.city, country: @building.country, postal_code: @building.postal_code, state: @building.state, street_address_3: @building.street_address_3, street_address: @building.street_address, street_address_2: @building.street_address_2 }
+      post :create,
+            building: { city: @building.city,
+                        country: @building.country,
+                        postal_code: @building.postal_code,
+                        state: @building.state,
+                        street_address_3: @building.street_address_3,
+                        street_name: @building.street_name,
+                        building_number: @building.building_number,
+                        street_address_2: @building.street_address_2 }
     end
-
     assert_redirected_to building_path(assigns(:building))
   end
 
   test "should not create building if not logged in" do
     assert_no_difference('Building.count') do
-      post :create, building: { city: @building.city, country: @building.country, postal_code: @building.postal_code, state: @building.state, street_address_3: @building.street_address_3, street_address: @building.street_address, street_address_2: @building.street_address_2 }
+      post :create,
+            building: { city: @building.city,
+                        country: @building.country,
+                        postal_code: @building.postal_code,
+                        state: @building.state,
+                        street_address_3: @building.street_address_3,
+                        street_name: @building.street_name,
+                        building_number: @building.building_number,
+                        street_address_2: @building.street_address_2 }
     end
-
     assert_redirected_to new_user_session_url
   end
 
@@ -70,36 +84,42 @@ class BuildingsControllerTest < ActionController::TestCase
 
   test "should update building" do
     sign_in @admin
-    patch :update, id: @building, building: { city: @building.city,
-                                              country: @building.country,
-                                              postal_code: @building.postal_code,
-                                              state: @building.state,
-                                              street_address_3: @building.street_address_3,
-                                              street_address: @building.street_address,
-                                              street_address_2: @building.street_address_2 }
+    patch :update, id: @building,
+            building: { city: @building.city,
+                        country: @building.country,
+                        postal_code: @building.postal_code,
+                        state: @building.state,
+                        street_address_3: @building.street_address_3,
+                        street_name: @building.street_name,
+                        building_number: @building.building_number,
+                        street_address_2: @building.street_address_2 }
     assert_redirected_to building_path(assigns(:building))
   end
 
   test "should not update building if not logged in" do
-    patch :update, id: @building, building: { city: @building.city,
-                                              country: @building.country,
-                                              postal_code: @building.postal_code,
-                                              state: @building.state,
-                                              street_address_3: @building.street_address_3,
-                                              street_address: @building.street_address,
-                                              street_address_2: @building.street_address_2 }
+    patch :update, id: @building,
+            building: { city: @building.city,
+                        country: @building.country,
+                        postal_code: @building.postal_code,
+                        state: @building.state,
+                        street_address_3: @building.street_address_3,
+                        street_name: @building.street_name,
+                        building_number: @building.building_number,
+                        street_address_2: @building.street_address_2 }
     assert_redirected_to new_user_session_url
   end
 
   test "should not update building if not admin" do
     sign_in @user
-    patch :update, id: @building, building: { city: @building.city,
-                                              country: @building.country,
-                                              postal_code: @building.postal_code,
-                                              state: @building.state,
-                                              street_address_3: @building.street_address_3,
-                                              street_address: @building.street_address,
-                                              street_address_2: @building.street_address_2 }
+    patch :update, id: @building,
+            building: { city: @building.city,
+                        country: @building.country,
+                        postal_code: @building.postal_code,
+                        state: @building.state,
+                        street_address_3: @building.street_address_3,
+                        street_name: @building.street_name,
+                        building_number: @building.building_number,
+                        street_address_2: @building.street_address_2 }
     assert_redirected_to root_url
   end
 
@@ -109,7 +129,6 @@ class BuildingsControllerTest < ActionController::TestCase
     assert_difference('Building.count', -1) do
       delete :destroy, id: @building
     end
-
     assert_redirected_to buildings_path
   end
 
@@ -117,7 +136,6 @@ class BuildingsControllerTest < ActionController::TestCase
     assert_no_difference'Building.count' do
       delete :destroy, id: @building
     end
-
     assert_redirected_to new_user_session_url
   end
 
@@ -126,7 +144,7 @@ class BuildingsControllerTest < ActionController::TestCase
     assert_no_difference'Building.count' do
       delete :destroy, id: @building
     end
-
     assert_redirected_to root_url
   end
+
 end

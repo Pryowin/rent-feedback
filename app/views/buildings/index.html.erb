@@ -10,7 +10,8 @@
 
   <thead>
     <tr>
-      <th>Address  </th>
+      <th>Number  </th>
+      <th>Street   </th>
       <th>City     </th>
       <th>State    </th>
       <th>Zip      </th>
@@ -22,7 +23,8 @@
   <tbody>
     <% @buildings.each do |building| %>
       <tr>
-        <td><%= link_to building.street_address , building %></td>
+        <td><%= building.building_number %></td>
+        <td><%= link_to building.street_name , building %></td>
         <td><%= building.city %></td>
         <td><%= building.state %></td>
         <td><%= building.postal_code %></td>
