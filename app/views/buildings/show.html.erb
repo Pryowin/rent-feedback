@@ -3,7 +3,7 @@
 
 <p>
   <strong>Address:</strong>
-  <%= @building.building_number %><%= @building.street_name %>
+  <%= @building.building_number %> <%= @building.street_name %>
 </p>
 
 <p>
@@ -36,5 +36,10 @@
   <%= @building.country %>
 </p>
 
-<%= link_to 'Edit', edit_building_path(@building) %> |
-<%= link_to 'Back', buildings_path %>
+
+  <%= link_to '< Back', buildings_path, class: "btn btn-default" %>
+
+  <% if !current_user.nil? && current_user.admin? %>
+    <%= link_to 'Edit', edit_building_path(@building),
+              class: "btn btn-default" %>
+  <% end %>
