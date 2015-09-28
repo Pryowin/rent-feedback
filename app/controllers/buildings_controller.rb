@@ -87,8 +87,8 @@ class BuildingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_building
-      if Building.exists?(params[:id])
-        @building = Building.find(params[:id])
+      if Building.exists?(params[:id].to_i)
+        @building = Building.find(params[:id].to_i)
       end
     end
 

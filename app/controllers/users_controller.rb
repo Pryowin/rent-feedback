@@ -15,8 +15,7 @@ class UsersController < ApplicationController
   end
 
   def show
-
-    if !User.exists?(params[:id]) || current_user.nil?
+    if !User.exists?(params[:id].to_i) || current_user.nil?
       redirect_to root_url
       return
     end
