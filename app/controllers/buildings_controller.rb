@@ -36,14 +36,14 @@ class BuildingsController < ApplicationController
   # POST /buildings.json
   def create
     @building = Building.new(building_params)
-
     respond_to do |format|
       if @building.save
         format.html { redirect_to @building, notice: 'Building created.' }
         format.json { render :show, status: :created, location: @building }
       else
         format.html { render :new }
-        format.json { render json: @building.errors, status: :unprocessable_entity }
+        err = @building.errors
+        format.json { render json: err, status: :unprocessable_entity }
       end
     end
   end
@@ -57,7 +57,8 @@ class BuildingsController < ApplicationController
         format.json { render :show, status: :ok, location: @building }
       else
         format.html { render :edit }
-        format.json { render json: @building.errors, status: :unprocessable_entity }
+        err = @building.errors
+        format.json { render json: err, status: :unprocessable_entity }
       end
     end
   end
@@ -76,7 +77,8 @@ class BuildingsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_building
-    @building = Building.find(params[:id].to_i) if Building.exists?(params[:id].to_i)
+    user_id = params[:id].to_i
+    @building = Building.find(user_id) if Building.exists?(user_id)
   end
 
   # Never trust parameters from the scary internet, allow the white list
@@ -96,7 +98,8 @@ class BuildingsController < ApplicationController
       buildings = Building.where('postal_code=(?)', search)
     else
       search.downcase!
-      buildings = Building.where('lower(city)=? OR upper(state)=? OR lower(street_name) like(?)',
+      wherec = 'lower(city)=? OR upper(state)=? OR lower(street_name) like(?)'
+      buildings = Building.where(wherec,
                                  search, search.upcase, search + '%')
     end
     @buildings = buildings.paginate(page: params[:page])

@@ -12,7 +12,7 @@ User.create!(name:                'David Burke',
              admin:               true,
              renter:              true,
              password:            'foobar65',
-             confirmed_at:        Time.now
+             confirmed_at:        Time.zone.now
             )
 
 79.times do
