@@ -10,11 +10,18 @@ class BuildingsControllerTest < ActionController::TestCase
     @admin = users(:david)
   end
 
-  test "should get index" do
+  test "should get index with search params" do
     get :index, :search => @building.city
     assert_response :success
     assert_not_nil assigns(:buildings)
   end
+
+  test "should get index without search params" do
+    get :index
+    assert_response :success
+    assert_not_nil assigns(:buildings)
+  end
+
 
   test "should get new" do
     sign_in @user

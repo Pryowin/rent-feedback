@@ -11,7 +11,7 @@ class BuildingsController < ApplicationController
   # GET /buildings
   # GET /buildings.json
   def index
-    if params[:search].empty?
+    if params[:search].nil? || params[:search].empty?
       @buildings =  Building.paginate(page: params[:page])
     else
       if !params[:search].match(/[^0-9]/)
@@ -94,6 +94,13 @@ class BuildingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def building_params
-      params.require(:building).permit(:building_number,:street_name, :street_address_2, :street_address_3, :city, :state, :postal_code, :country)
+      params.require(:building).permit(:building_number,
+                                       :street_name,
+                                       :street_address_2,
+                                       :street_address_3,
+                                       :city,
+                                       :state,
+                                       :postal_code,
+                                       :country)
     end
 end

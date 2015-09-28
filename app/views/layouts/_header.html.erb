@@ -7,6 +7,7 @@
         <% if user_signed_in? %>
           <li><%= link_to "Profile",current_user %></li>
         <% end %>
+        <li><%= link_to "Rentals",  buildings_path %></li>
         <li><%= link_to "About",    about_path %></li>
         <li><%= link_to "Contact",  contact_path %></li>
         <li><%= link_to "Help",     help_path %></li>
@@ -14,11 +15,11 @@
       <ul class="nav navbar-nav navbar-right">
         <% if !user_signed_in? %>
           <li>  <%= link_to   "Log In",
-                              '/users/sign_in',
+                              new_user_session_path,
                               class: "btn btn-primary" %>
           </li>
         <% else %>
-          <li><%= link_to "Logout", '/users/sign_out',
+          <li><%= link_to "Logout", destroy_user_session_path,
                                     method: "delete",
                                     class: "btn btn-primary" %>
           </li>
