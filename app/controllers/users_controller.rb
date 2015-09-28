@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  # Prevents edit/delete of Users
+  # Ensures that non-admin users can only view their own profile
   def new
   end
 
@@ -15,17 +17,17 @@ class UsersController < ApplicationController
   end
 
   def show
-    if !User.exists?(params[:id].to_i) || current_user.nil?
-      redirect_to root_url
-      return
-    end
-
-    @user = User.find(params[:id])
-
-    if !current_user.admin && current_user != @user
-      redirect_to root_url
-    end
-
+    redirect_to root_url unless current_or_admin?(params[:id])
   end
 
+  private
+
+  def current_or_admin?(id)
+    return false unless User.exists?(id.to_i)
+    return false if current_user.nil?
+    @user = User.find(id.to_i)
+    return true if current_user.admin
+    return true if current_user == @user
+    false
+  end
 end

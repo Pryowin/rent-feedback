@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def complete_title(page_title = '')
     base_title = RentFeedback::Application::APP_NAME
     if page_title.empty?

@@ -15,3 +15,10 @@
 /log/*
 !/log/.keep
 /tmp
+
+#Ignore text files in root folder
+/*.txt
+/*.text
+
+#Ignore yml files in root folder
+/*.yml

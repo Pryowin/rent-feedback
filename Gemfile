@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.3'
 gem 'bcrypt'
 
-#Image Upload
+# Image Upload
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
@@ -24,28 +24,27 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 
-#Create sample data
+# Create sample data
 gem 'faker'
-
+# Identify entered text that contains profanity
 gem 'obscenity'
 
 group :development, :test do
   gem 'byebug'
   gem 'sqlite3'
-	gem 'web-console', '~> 2.0'
-	gem 'spring'
+  gem 'web-console', '~> 2.0'
+  gem 'spring'
 end
 
 group :test do
-	gem 'minitest-reporters'
-	gem 'mini_backtrace'
-
+  gem 'minitest-reporters'
+  gem 'mini_backtrace'
 end
 
 group :production do
-	gem 'pg'
-	gem 'rails_12factor'
-	gem 'puma'
+  gem 'pg'
+  gem 'rails_12factor'
+  gem 'puma'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
