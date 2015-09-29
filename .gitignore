@@ -16,9 +16,12 @@
 !/log/.keep
 /tmp
 
-#Ignore text files in root folder
+# Ignore text files in root folder
 /*.txt
 /*.text
 
-#Ignore yml files in root folder
+# Ignore yml files in root folder
 /*.yml
+
+# Ignore test coverage reports
+/coverage

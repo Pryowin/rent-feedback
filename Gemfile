@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.3'
+gem 'rails', '4.2.4'
 gem 'bcrypt'
 
 # Image Upload
@@ -39,6 +39,7 @@ end
 group :test do
   gem 'minitest-reporters'
   gem 'mini_backtrace'
+  gem 'simplecov'
 end
 
 group :production do
