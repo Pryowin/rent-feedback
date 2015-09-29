@@ -1,3 +1,5 @@
 class Building < ActiveRecord::Base
-  default_scope { order(state: :asc, city: :asc) }
+  validates :city,        presence: true
+  validates :country,     presence: true
+  validates :street_name, presence: true
 end

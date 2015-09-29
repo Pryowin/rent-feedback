@@ -6,8 +6,8 @@ one:
   street_address_2:
   street_address_3: MyString
   city: MyString
-  state: MyString
-  postal_code: MyString
+  state: "CA"
+  postal_code: "94534"
   country: MyString
 
 two:
@@ -16,6 +16,6 @@ two:
   street_address_2:
   street_address_3: MyString
   city: MyString
-  state: MyString
-  postal_code: MyString
+  state: "AL"
+  postal_code: "90000"
   country: MyString

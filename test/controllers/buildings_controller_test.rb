@@ -9,8 +9,14 @@ class BuildingsControllerTest < ActionController::TestCase
     @admin = users(:david)
   end
 
-  test 'should get index with search params' do
+  test 'should get index with alpha search params' do
     get :index, search: @building.city
+    assert_response :success
+    assert_not_nil assigns(:buildings)
+  end
+
+  test 'should get index with numeric search params' do
+    get :index, search: @building.postal_code
     assert_response :success
     assert_not_nil assigns(:buildings)
   end
@@ -21,7 +27,6 @@ class BuildingsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:buildings)
   end
 
-  # TODO: Add tests for search buidlings (But only after adding code coverage)
 
   test 'should get new' do
     sign_in @user
@@ -63,6 +68,21 @@ class BuildingsControllerTest < ActionController::TestCase
                        street_address_2: @building.street_address_2 }
     end
     assert_redirected_to new_user_session_url
+  end
+
+  test 'should not create building with invalid data' do
+    sign_in @user
+    assert_no_difference('Building.count') do
+      post :create,
+           building: { city: '',
+                       country: @building.country,
+                       postal_code: @building.postal_code,
+                       state: @building.state,
+                       street_address_3: @building.street_address_3,
+                       street_name: @building.street_name,
+                       building_number: @building.building_number,
+                       street_address_2: @building.street_address_2 }
+    end
   end
 
   test 'should show building' do
@@ -126,6 +146,20 @@ class BuildingsControllerTest < ActionController::TestCase
                                building_number: @building.building_number,
                                street_address_2: @building.street_address_2 }
     assert_redirected_to root_url
+  end
+
+  test 'should not update building if not valid' do
+    sign_in @admin
+    patch :update, id: @building,
+                   building: { city: '',
+                               country: @building.country,
+                               postal_code: @building.postal_code,
+                               state: @building.state,
+                               street_address_3: @building.street_address_3,
+                               street_name: @building.street_name,
+                               building_number: @building.building_number,
+                               street_address_2: @building.street_address_2 }
+    assert_select 'div#error_explanation'
   end
 
   test 'should destroy building' do

@@ -94,7 +94,7 @@ class BuildingsController < ApplicationController
   end
 
   def search_buildings(search)
-    if search.match(/[^0-9]/)
+    if search.match(/^[0-9]+$/)
       buildings = Building.where('postal_code=(?)', search)
     else
       search.downcase!
