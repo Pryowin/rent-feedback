@@ -40,7 +40,8 @@ ActiveRecord::Schema.define(version: 20150929175157) do
     t.integer  "value_rating"
     t.integer  "facilities_rating"
     t.integer  "cleanliness_rating"
-    t.text     "review_details"
+    t.string   "headline"
+    t.text     "details"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end
