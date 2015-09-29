@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150924231547) do
+ActiveRecord::Schema.define(version: 20150929175157) do
 
   create_table "buildings", force: :cascade do |t|
     t.integer  "building_number"
@@ -31,6 +31,22 @@ ActiveRecord::Schema.define(version: 20150924231547) do
   add_index "buildings", ["country"], name: "index_buildings_on_country"
   add_index "buildings", ["state"], name: "index_buildings_on_state"
   add_index "buildings", ["street_name"], name: "index_buildings_on_street_name"
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "author_id"
+    t.integer  "subject_id"
+    t.integer  "overall_rating"
+    t.integer  "location_rating"
+    t.integer  "value_rating"
+    t.integer  "facilities_rating"
+    t.integer  "cleanliness_rating"
+    t.text     "review_details"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "reviews", ["author_id"], name: "index_reviews_on_author_id"
+  add_index "reviews", ["subject_id"], name: "index_reviews_on_subject_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                                   null: false
