@@ -21,7 +21,7 @@ class ReviewTest < ActiveSupport::TestCase
     assert_not @review.valid?, 'Building does not exist'
   end
 
-  # [OPTIMIZE] Deal with duplication of code
+  # OPTIMIZE Deal with duplication of code
   test 'overall rating must be within range' do
     @review.overall_rating = 0
     assert_not @review.valid?, 'Rating too low'

@@ -4,6 +4,8 @@ class Review < ActiveRecord::Base
   validates_presence_of :user
   validates_presence_of :building
 
+  default_scope -> { order(created_at: :desc) }
+
   MAX_HEADLINE_LENGTH = 80
 
   validates :author_id,  presence: true
