@@ -14,6 +14,14 @@ User.create!(name:                'David Burke',
              password:            'foobar65',
              confirmed_at:        Time.zone.now
             )
+User.create!(name:                'Amber Burke',
+             email:               'amber@amberfire.net',
+             handle:              'Amberfire',
+             admin:               false,
+             renter:              true,
+             password:            'foobar65',
+             confirmed_at:        Time.zone.now
+            )
 
 79.times do
   Building.create!(street_name:     Faker::Address.street_name,
@@ -45,9 +53,9 @@ end
                   )
 end
 
-5.times do
-  Review.create!(author_id:            User.first.id,
-                 subject_id:           Building.first.id,
+3.times do
+  Review.create!(author_id:            1,
+                 subject_id:           1,
                  overall_rating:       Random.rand(1..5),
                  location_rating:      Random.rand(1..5),
                  value_rating:         Random.rand(1..5),
@@ -58,3 +66,28 @@ end
                                          .paragraph(Random.rand(1..7))
                 )
 end
+2.times do
+  Review.create!(author_id:            1,
+                 subject_id:           2,
+                 overall_rating:       Random.rand(1..5),
+                 location_rating:      Random.rand(1..5),
+                 value_rating:         Random.rand(1..5),
+                 cleanliness_rating:   Random.rand(1..5),
+                 facilities_rating:    Random.rand(1..5),
+                 headline:             Faker::Lorem.sentence(1),
+                 details:              Faker::Lorem
+                                         .paragraph(Random.rand(1..7))
+                )
+end
+
+Review.create!(author_id:            2,
+               subject_id:           3,
+               overall_rating:       Random.rand(1..5),
+               location_rating:      Random.rand(1..5),
+               value_rating:         Random.rand(1..5),
+               cleanliness_rating:   Random.rand(1..5),
+               facilities_rating:    Random.rand(1..5),
+               headline:             Faker::Lorem.sentence(1),
+               details:              Faker::Lorem
+                                       .paragraph(Random.rand(1..7))
+              )

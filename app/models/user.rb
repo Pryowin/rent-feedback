@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   MAX_HANDLE_LENGTH = 20
   MAX_NAME_LENGTH = 50
 
-  has_many :reviews, foreign_key: 'author-id'
+  has_many :reviews, foreign_key: 'author_id'
 
   validates :name, presence: true
 

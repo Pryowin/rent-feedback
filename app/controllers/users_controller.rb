@@ -17,7 +17,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    redirect_to root_url unless current_or_admin?(params[:id])
+    redirect_to root_url unless current_or_admin?(params[:id].to_i)
+    @user = User.find(params[:id].to_i)
+    @reviews = @user.reviews.paginate(page: params[:page])
   end
 
   private
