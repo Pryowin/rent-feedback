@@ -3,6 +3,6 @@ class Building < ActiveRecord::Base
   validates :country,     presence: true
   validates :street_name, presence: true
 
-  has_many :reviews,     foreign_key: "subject-id"
-  
+  has_many :reviews,     foreign_key: "subject_id"
+
 end

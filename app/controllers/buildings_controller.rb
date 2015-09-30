@@ -21,6 +21,7 @@ class BuildingsController < ApplicationController
   # GET /buildings/1.json
   def show
     redirect_to buildings_path if @building.nil?
+    @reviews = @building.reviews.paginate(page: params[:page])
   end
 
   # GET /buildings/new
