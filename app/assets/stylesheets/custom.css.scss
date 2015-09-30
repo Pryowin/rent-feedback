@@ -71,7 +71,7 @@ ul
     display:inline;
 }
 th {
-  background: #5F9EA0;
+  background: cadetblue;
   height: 40px;
   font-weight: bold;
   font-size: 1.5em;
@@ -79,4 +79,7 @@ th {
 }
 td {
   padding: 5px;
+}
+.badge {
+  background-color: cadetblue;
 }

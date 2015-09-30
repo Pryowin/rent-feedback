@@ -22,6 +22,7 @@
       <th>State    </th>
       <th>Zip      </th>
       <th>Country  </th>
+      <th>Reviews  </th>
     </tr>
   </thead>
 
@@ -29,12 +30,15 @@
   <tbody>
     <% @buildings.each do |building| %>
       <tr>
-        <td><%= building.building_number %></td>
-        <td><%= link_to building.street_name , building %></td>
-        <td><%= building.city %></td>
-        <td><%= building.state %></td>
-        <td><%= building.postal_code %></td>
-        <td><%= building.country %></td>
+        <td><%= link_to building.building_number, building %></td>
+        <td><%= link_to building.street_name, building %></td>
+        <td><%= link_to building.city, building %></td>
+        <td><%= link_to building.state %>, building</td>
+        <td><%= link_to building.postal_code %>, building</td>
+        <td><%= link_to building.country %>, building</td>
+        <td>
+          <span class="badge"><%=  link_to building.reviews.count, building %>
+        </td>
       </tr>
     <% end %>
   </tbody>
