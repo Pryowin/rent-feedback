@@ -21,7 +21,7 @@ class ReviewTest < ActiveSupport::TestCase
     assert_not @review.valid?, 'Building does not exist'
   end
 
-  # OPTIMIZE Deal with duplication of code
+  # OPTIMIZE: Deal with duplication of code
   test 'overall rating must be within range' do
     @review.overall_rating = 0
     assert_not @review.valid?, 'Rating too low'
@@ -64,7 +64,7 @@ class ReviewTest < ActiveSupport::TestCase
   end
 
   test 'invalid headline' do
-    @review.headline = 'a' *(MAX_HEADLINE_LENGTH + 1)
+    @review.headline = 'a' * (MAX_HEADLINE_LENGTH + 1)
     assert_not @review.valid?, 'Headline too long'
     @review.headline = 'shitface'
     assert_not @review.valid?, 'Headline profane'
@@ -78,5 +78,4 @@ class ReviewTest < ActiveSupport::TestCase
     @review.details = ''
     assert_not @review.valid?, 'Details missing'
   end
-
 end
