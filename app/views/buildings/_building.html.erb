@@ -1,0 +1,31 @@
+<section class="buildingInfo">
+  <table>
+    <tr>
+      <td><strong>Address:</strong></td>
+      <td>
+        <%= @building.building_number %>
+        <%= @building.street_name %>
+      </td>
+    </tr>
+    <tr>
+      <td><strong></strong></td>
+      <td><%= @building.street_address_2 %></td>
+    </tr>
+    <tr>
+      <td><strong>City:</strong></td>
+      <td><%= @building.city %></td>
+    </tr>
+    <tr>
+      <td><strong>State:</strong></td>
+      <td><%= @building.state %></td>
+    </tr>
+    <tr>
+      <td><strong>Postal code:</strong></td>
+      <td><%= @building.postal_code %></td>
+    </tr>
+    <tr>
+      <td><strong>Country:</strong></td>
+      <td><%= @building.country %></td>
+    </tr>
+  </table>
+</section>

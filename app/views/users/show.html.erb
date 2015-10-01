@@ -1,27 +1,31 @@
 <% provide(:title, @user.handle) %>
 
-<aside class="col-md-4">
-  <table>
-    <tr>
-      <td>Nickname:</td>
-      <td><%= @user.handle %></td>
-    </tr>
-    <tr>
-      <td>Name:</td>
-      <td><%=@user.name %></td>
-    </tr>
-    <tr>
-      <td>Email:</td>
-      <td><%=@user.email %></td>
-    </tr>
-  </table>
-</aside>
+<div class="user-table">
+  <aside class="col-md-4">
+    <table>
+      <tr>
+        <td>Nickname:</td>
+        <td><%= @user.handle %></td>
+      </tr>
+      <tr>
+        <td>Name:</td>
+        <td><%=@user.name %></td>
+      </tr>
+      <tr>
+        <td>Email:</td>
+        <td><%=@user.email %></td>
+      </tr>
+    </table>
+  </aside>
+</div>
 
 <div class="col-md-8">
-  <% if @user.reviews.any? %>
-    <h3>
-      You have written <%= pluralize(@user.reviews.count, "review") %>
-    </h3>
+  <div class="review-count">
+    <% if @user.reviews.any? %>
+      <h3>
+        You have written <%= pluralize(@user.reviews.count, "review") %>
+      </h3>
+    </div>
     <ul class="reviews">
       <%= render @reviews %>
     </ul>

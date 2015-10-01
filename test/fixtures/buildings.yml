@@ -19,3 +19,13 @@ two:
   state: "AL"
   postal_code: "90000"
   country: MyString
+
+three:
+  street_name: MyString
+  building_number: 42
+  street_address_2:
+  street_address_3: MyString
+  city: MyString
+  state: "AL"
+  postal_code: "90000"
+  country: MyString

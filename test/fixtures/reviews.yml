@@ -1,8 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  author_id: 1
-  subject_id: 1
+  user: david
+  building: one
   overall_rating: 1
   location_rating: 1
   value_rating: 1
@@ -12,8 +12,8 @@ one:
   details: MyText
 
 two:
-  author_id: 1
-  subject_id: 1
+  user: amber
+  building: two
   overall_rating: 1
   location_rating: 1
   value_rating: 1
@@ -21,3 +21,16 @@ two:
   cleanliness_rating: 1
   headline: MyString
   details: MyText
+
+<% 20.times do |n| %>
+review_#<%= n %>:
+  user: schrodie
+  building: three
+  overall_rating: 1
+  location_rating: 1
+  value_rating: 1
+  facilities_rating: 1
+  cleanliness_rating: 1
+  headline: MyString
+  details: MyText
+<% end %>
