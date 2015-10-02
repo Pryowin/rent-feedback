@@ -1,7 +1,7 @@
 class BuildingsController < ApplicationController
   include Sessions
 
-  before_action :set_building, only: [:show, :edit, :update, :destroy]
+  before_action :check_building, only: [:show, :edit, :update, :destroy]
   before_action :requires_authenticated_user,
                 only: [:new, :create, :edit, :update, :destroy]
   before_action :requires_admin_user,
@@ -20,7 +20,7 @@ class BuildingsController < ApplicationController
   # GET /buildings/1
   # GET /buildings/1.json
   def show
-    redirect_to buildings_path if @building.nil?
+    @building = Building.find(params[:id].to_i)
     @reviews = @building.reviews.paginate(page: params[:page])
   end
 
@@ -31,6 +31,7 @@ class BuildingsController < ApplicationController
 
   # GET /buildings/1/edit
   def edit
+    @building = Building.find(params[:id].to_i)
   end
 
   # POST /buildings
@@ -52,6 +53,7 @@ class BuildingsController < ApplicationController
   # PATCH/PUT /buildings/1
   # PATCH/PUT /buildings/1.json
   def update
+    @building = Building.find(params[:id].to_i)
     respond_to do |format|
       if @building.update(building_params)
         format.html { redirect_to @building, notice: 'Building updated.' }
@@ -67,6 +69,7 @@ class BuildingsController < ApplicationController
   # DELETE /buildings/1
   # DELETE /buildings/1.json
   def destroy
+    @building = Building.find(params[:id].to_i)
     @building.destroy
     respond_to do |format|
       format.html { redirect_to buildings_url, notice: 'Building destroyed.' }
@@ -77,9 +80,8 @@ class BuildingsController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_building
-    user_id = params[:id].to_i
-    @building = Building.find(user_id) if Building.exists?(user_id)
+  def check_building
+    redirect_to root_url unless Building.exists?(params[:id].to_i)
   end
 
   # Never trust parameters from the scary internet, allow the white list

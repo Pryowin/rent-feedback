@@ -27,7 +27,6 @@ class BuildingsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:buildings)
   end
 
-
   test 'should get new' do
     sign_in @user
     get :new
@@ -42,30 +41,14 @@ class BuildingsControllerTest < ActionController::TestCase
   test 'should create building' do
     sign_in @user
     assert_difference('Building.count') do
-      post :create,
-           building: { city: @building.city,
-                       country: @building.country,
-                       postal_code: @building.postal_code,
-                       state: @building.state,
-                       street_address_3: @building.street_address_3,
-                       street_name: @building.street_name,
-                       building_number: @building.building_number,
-                       street_address_2: @building.street_address_2 }
+      create(@building.city)
     end
     assert_redirected_to building_path(assigns(:building))
   end
 
   test 'should not create building if not logged in' do
     assert_no_difference('Building.count') do
-      post :create,
-           building: { city: @building.city,
-                       country: @building.country,
-                       postal_code: @building.postal_code,
-                       state: @building.state,
-                       street_address_3: @building.street_address_3,
-                       street_name: @building.street_name,
-                       building_number: @building.building_number,
-                       street_address_2: @building.street_address_2 }
+      create(@building.city)
     end
     assert_redirected_to new_user_session_url
   end
@@ -73,15 +56,7 @@ class BuildingsControllerTest < ActionController::TestCase
   test 'should not create building with invalid data' do
     sign_in @user
     assert_no_difference('Building.count') do
-      post :create,
-           building: { city: '',
-                       country: @building.country,
-                       postal_code: @building.postal_code,
-                       state: @building.state,
-                       street_address_3: @building.street_address_3,
-                       street_name: @building.street_name,
-                       building_number: @building.building_number,
-                       street_address_2: @building.street_address_2 }
+      create('')
     end
   end
 
@@ -109,56 +84,24 @@ class BuildingsControllerTest < ActionController::TestCase
 
   test 'should update building' do
     sign_in @admin
-    patch :update, id: @building,
-                   building: { city: @building.city,
-                               country: @building.country,
-                               postal_code: @building.postal_code,
-                               state: @building.state,
-                               street_address_3: @building.street_address_3,
-                               street_name: @building.street_name,
-                               building_number: @building.building_number,
-                               street_address_2: @building.street_address_2 }
+    update(@building.city)
     assert_redirected_to building_path(assigns(:building))
   end
 
   test 'should not update building if not logged in' do
-    patch :update, id: @building,
-                   building: { city: @building.city,
-                               country: @building.country,
-                               postal_code: @building.postal_code,
-                               state: @building.state,
-                               street_address_3: @building.street_address_3,
-                               street_name: @building.street_name,
-                               building_number: @building.building_number,
-                               street_address_2: @building.street_address_2 }
+    update(@building.city)
     assert_redirected_to new_user_session_url
   end
 
   test 'should not update building if not admin' do
     sign_in @user
-    patch :update, id: @building,
-                   building: { city: @building.city,
-                               country: @building.country,
-                               postal_code: @building.postal_code,
-                               state: @building.state,
-                               street_address_3: @building.street_address_3,
-                               street_name: @building.street_name,
-                               building_number: @building.building_number,
-                               street_address_2: @building.street_address_2 }
+      update(@building.city)
     assert_redirected_to root_url
   end
 
   test 'should not update building if not valid' do
     sign_in @admin
-    patch :update, id: @building,
-                   building: { city: '',
-                               country: @building.country,
-                               postal_code: @building.postal_code,
-                               state: @building.state,
-                               street_address_3: @building.street_address_3,
-                               street_name: @building.street_name,
-                               building_number: @building.building_number,
-                               street_address_2: @building.street_address_2 }
+    update('')
     assert_select 'div#error_explanation'
   end
 
@@ -183,5 +126,31 @@ class BuildingsControllerTest < ActionController::TestCase
       delete :destroy, id: @building
     end
     assert_redirected_to root_url
+  end
+
+  private
+
+  def create(city)
+    post :create,
+         building: { city: city,
+                     country: @building.country,
+                     postal_code: @building.postal_code,
+                     state: @building.state,
+                     street_address_3: @building.street_address_3,
+                     street_name: @building.street_name,
+                     building_number: @building.building_number,
+                     street_address_2: @building.street_address_2 }
+  end
+
+  def update(city)
+    patch :update, id: @building,
+                   building: { city: city,
+                               country: @building.country,
+                               postal_code: @building.postal_code,
+                               state: @building.state,
+                               street_address_3: @building.street_address_3,
+                               street_name: @building.street_name,
+                               building_number: @building.building_number,
+                               street_address_2: @building.street_address_2 }
   end
 end
