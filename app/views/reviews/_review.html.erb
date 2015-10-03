@@ -1,13 +1,7 @@
 
 <li id="review-<%= review %>">
   <span class = "content">
-    <% (1..5).each do |star| %>
-      <% if star <= review.overall_rating %>
-          <%= image_tag "star_rating_full.png" %>
-        <% else %>
-          <%= image_tag "star_rating_empty.png" %>
-      <% end %>
-    <% end %>
+    <%= render "/reviews/stars", rating: review.overall_rating %>
     &nbsp;
     <%= review.headline %>
   </span>

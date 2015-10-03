@@ -1,0 +1,7 @@
+<% (1..5).each do |star| %>
+  <% if star <= rating %>
+      <%= image_tag "star_rating_full.png" %>
+    <% else %>
+      <%= image_tag "star_rating_empty.png" %>
+  <% end %>
+<% end %>
