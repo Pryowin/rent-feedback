@@ -1,0 +1,43 @@
+<%#OPTIMIZE: Use CSS rather than HTML table %>
+<table>
+  <tr>
+    <td>
+      Overall:
+    </td>
+    <td>
+      <%= render "/reviews/stars", rating: @review.overall_rating %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Location:
+    </td>
+    <td>
+      <%= render "/reviews/stars", rating: @review.location_rating %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Value:
+    </td>
+    <td>
+      <%= render "/reviews/stars", rating: @review.value_rating %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Facilities:
+    </td>
+    <td>
+      <%= render "/reviews/stars", rating: @review.facilities_rating %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Cleanliness:
+    </td>
+    <td>
+      <%= render "/reviews/stars", rating: @review.cleanliness_rating %>
+    </td>
+  </tr>
+</table>

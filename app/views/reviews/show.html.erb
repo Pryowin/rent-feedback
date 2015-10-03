@@ -1,3 +1,20 @@
-<h1>Reviews#show</h1>
-<p>Find me in app/views/reviews/show.html.erb</p>
-<p><%= @review.details %>
+<p id="notice"><%= notice %></p>
+<% provide(:title, "Review") %>
+<div class="row">
+  <aside class="col-md-4">
+    <%= render @building %>
+  </aside>
+
+  <div class="col-md-8">
+    <h3> <%= @review.headline %> </h3>
+    <p> Author:<%= @author.handle %> </p>
+    <%= render 'rating_table' %>
+    </br>
+    <p><%= @review.details %></p>
+    <%= render 'review_date' %>
+  </div>
+
+</div>
+
+<% #TODO: Add Back button %>
+<% #TODO: Add Edit button %>

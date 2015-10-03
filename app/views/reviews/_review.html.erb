@@ -3,6 +3,6 @@
   <span class = "content">
     <%= render "/reviews/stars", rating: review.overall_rating %>
     &nbsp;
-    <%= review.headline %>
+    <%= link_to review.headline, review %>
   </span>
 </li>

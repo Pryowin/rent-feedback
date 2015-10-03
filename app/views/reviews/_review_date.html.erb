@@ -1,0 +1,7 @@
+<div class="review_date">
+</br>
+  Written: <%= @review.created_at.strftime('%b %e, %Y  ') %>
+  <% if @review.created_at != @review.updated_at %>
+    Updated: <%= @review.updated_at.strftime('%b %e, %Y  ') %>
+  <% end %>
+</div>
