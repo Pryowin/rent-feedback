@@ -27,9 +27,9 @@ class UsersController < ApplicationController
   def current_or_admin?(id)
     return false unless User.exists?(id.to_i)
     return false if current_user.nil?
-    @user = User.find(id.to_i)
+    user = User.find(id.to_i)
     return true if current_user.admin
-    return true if current_user == @user
+    return true if current_user == user
     false
   end
 end

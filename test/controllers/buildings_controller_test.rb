@@ -95,7 +95,7 @@ class BuildingsControllerTest < ActionController::TestCase
 
   test 'should not update building if not admin' do
     sign_in @user
-      update(@building.city)
+    update(@building.city)
     assert_redirected_to root_url
   end
 

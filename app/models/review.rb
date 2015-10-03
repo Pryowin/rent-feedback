@@ -2,7 +2,6 @@ class Review < ActiveRecord::Base
   belongs_to :building, foreign_key: 'subject_id'
   belongs_to :user, foreign_key: 'author_id'
 
-
   default_scope -> { order(created_at: :desc) }
 
   MAX_HEADLINE_LENGTH = 80

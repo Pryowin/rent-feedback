@@ -37,7 +37,12 @@
         <td><%= link_to building.postal_code %>, building</td>
         <td><%= link_to building.country %>, building</td>
         <td>
-          <span class="badge"><%=  link_to building.reviews.count, building %>
+          <span class="badge">
+            <%=  link_to building.reviews.count, building %>
+          </span>
+          <span class="btn btn-success btn-xs write-review">
+            <%=  link_to '+', new_review_path(subject: building) %>
+          </span>
         </td>
       </tr>
     <% end %>
