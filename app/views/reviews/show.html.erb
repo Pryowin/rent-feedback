@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 <% provide(:title, "Review") %>
 <div class="row">
   <aside class="col-md-4">
@@ -12,10 +12,14 @@
     </br>
     <p><%= @review.details %></p>
     <%= render 'review_date' %>
+    <% if current_user.id == @review.author_id %>
+      <%= link_to 'Edit', edit_review_path(@review),
+                class: "btn btn-default" %>
+    <% end %>
   </div>
 
 </div>
 
 <% #TODO: Add Back button %>
-<% #TODO: Add Edit button %>
+
 <% #TODO: Add Delete button %>

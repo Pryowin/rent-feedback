@@ -3,7 +3,6 @@ class ReviewsController < ApplicationController
   before_action :building_exists, only: [:new]
   before_action :user_logged_in, only: [:new, :create, :destroy, :edit]
 
-  # TODO: Add edit capabilties
   # TODO: Add delete capabilites
 
   def new
@@ -16,6 +15,22 @@ class ReviewsController < ApplicationController
     @author = User.find(@review.author_id)
     @building = Building.find(@review.subject_id)
     redirect_to root_url unless current_user == @author
+  end
+
+  def update
+    @review = Review.find(params[:id].to_i)
+    @building = Building.find(params[:subject_id])
+    @author = current_user
+    respond_to do |format|
+      if @review.update(review_params)
+        format.html { redirect_to @review, notice: 'Review Edited' }
+        format.json { render :show, status: :ok, location: @review }
+      else
+        format.html { render :edit }
+        err = @review.errors
+        format.json { render json: err, status: :unprocessable_entity }
+      end
+    end
   end
 
   def show
@@ -59,9 +74,7 @@ class ReviewsController < ApplicationController
                                    :cleanliness_rating,
                                    :location_rating,
                                    :facilities_rating,
-                                   :details,
-                                   :author_id,
-                                   :subject_id)
+                                   :details)
   end
 
   def user_logged_in

@@ -1,2 +1,11 @@
-<h1>Reviews#edit</h1>
-<p>Find me in app/views/reviews/edit.html.erb</p>
+
+<% provide(:title, "Edit Review") %>
+<div class="row">
+  <aside class="col-md-4">
+    <%= render @building %>
+  </aside>
+
+  <div class="col-md-8">
+    <%= render 'form' %>
+  </div>
+</div>

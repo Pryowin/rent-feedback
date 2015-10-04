@@ -2,7 +2,9 @@ require 'test_helper'
 
 class ReviewsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
-  # TODO: Add Create controller tests
+  # TODO: Add tests for create
+  # TODO: Add test for update
+
   def setup
     @review = reviews(:two)
     @user = users(:amber)
@@ -53,4 +55,16 @@ class ReviewsControllerTest < ActionController::TestCase
     get :new, subject: buildings(:one).id
     assert_response :success
   end
+
+  test 'should not allow edit if not logged in' do
+    get :edit, id: @review.id
+    assert_redirected_to root_url
+  end
+
+  test 'can only edit own reviews' do
+    sign_in @user
+    get :edit, id: @other_review.id
+    assert_redirected_to root_url
+  end
+
 end
