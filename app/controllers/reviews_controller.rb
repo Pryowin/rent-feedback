@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
   before_action :check_review, only: [:show, :edit, :update, :destroy]
   before_action :building_exists, only: [:new]
   before_action :user_logged_in, only: [:new, :create, :destroy, :edit]
+  before_action :author_of_review?, only:[:edit, :destroy]
 
   # TODO: Add delete capabilites
 
@@ -10,11 +11,17 @@ class ReviewsController < ApplicationController
     @review = Review.new
   end
 
+  def destroy
+    @review = Review.find(params[:id].to_i)
+    @author = User.find(@review.author_id)
+    @review.destroy
+    redirect_to user_path, id:@author.id
+  end
+
   def edit
     @review = Review.find(params[:id].to_i)
     @author = User.find(@review.author_id)
     @building = Building.find(@review.subject_id)
-    redirect_to root_url unless current_user == @author
   end
 
   def update
@@ -75,6 +82,11 @@ class ReviewsController < ApplicationController
                                    :location_rating,
                                    :facilities_rating,
                                    :details)
+  end
+
+  def author_of_review?
+    review = Review.find(params[:id].to_i)
+    redirect_to root_url unless current_user.id == review.author_id
   end
 
   def user_logged_in

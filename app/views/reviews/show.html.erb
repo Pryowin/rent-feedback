@@ -14,7 +14,11 @@
     <%= render 'review_date' %>
     <% if current_user.id == @review.author_id %>
       <%= link_to 'Edit', edit_review_path(@review),
-                class: "btn btn-default" %>
+                class: "btn btn-primary" %>
+      <%= link_to 'Delete', @review,
+                            method: :delete,
+                            data: { confirm: "Are you sure you want to delete?" },
+                            class: "btn btn-danger" %>
     <% end %>
   </div>
 

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ReviewsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
-  # TODO: Add tests for create
+
   # TODO: Add test for update
 
   def setup
@@ -65,6 +65,65 @@ class ReviewsControllerTest < ActionController::TestCase
     sign_in @user
     get :edit, id: @other_review.id
     assert_redirected_to root_url
+  end
+
+  test 'cannot delete if not logged in' do
+    assert_no_difference 'Review.count' do
+      delete :destroy, id: @review.id
+    end
+    assert_redirected_to root_url
+  end
+
+  test 'cannot delete if does not exist' do
+    sign_in @user
+    delete :destroy, id: 42
+    assert_redirected_to root_url
+  end
+
+  test 'cannot delete if not author'  do
+    sign_in @user
+    assert_no_difference 'Review.count' do
+      delete :destroy, id: @other_review.id
+    end
+    assert_redirected_to root_url
+  end
+
+  test 'can delete own reviews' do
+    sign_in @user
+    assert_difference 'Review.count', -1 do
+      delete :destroy, id: @review.id
+    end
+    assert_redirected_to user_path
+  end
+
+  test 'should create review' do
+    sign_in @user
+    assert_difference('Review.count') do
+      create(@review.overall_rating)
+    end
+  end
+
+  test 'Review not created with invalid data' do
+    sign_in @user
+    assert_no_difference('Review.count') do
+      create(6)
+    end
+  end
+
+  private
+
+  def create(rating)
+    post :create,
+         review: { author_id:         @user.id,
+                  overall_rating:     rating,
+                  cleanliness_rating: rating,
+                  facilities_rating:  rating,
+                  location_rating:    rating,
+                  value_rating:       rating,
+                  headline:           'Headline',
+                  details:            'Details'
+                },
+       subject_id: buildings(:one)
   end
 
 end
