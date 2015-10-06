@@ -23,11 +23,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
-
-# Create sample data
 gem 'faker'
-# Identify entered text that contains profanity
 gem 'obscenity'
+gem 'carmen-rails'
 
 group :development, :test do
   gem 'byebug'

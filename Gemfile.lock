@@ -52,6 +52,11 @@ GEM
       will_paginate
     builder (3.2.2)
     byebug (6.0.2)
+    carmen (1.0.2)
+      activesupport (>= 3.0.0)
+    carmen-rails (1.0.1)
+      carmen (~> 1.0.0)
+      rails
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -314,6 +319,7 @@ DEPENDENCIES
   bootstrap-sass
   bootstrap-will_paginate
   byebug
+  carmen-rails
   carrierwave
   coffee-rails (~> 4.1.0)
   devise

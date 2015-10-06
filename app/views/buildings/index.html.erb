@@ -33,9 +33,9 @@
         <td><%= link_to building.building_number, building %></td>
         <td><%= link_to building.street_name, building %></td>
         <td><%= link_to building.city, building %></td>
-        <td><%= link_to building.state %>, building</td>
-        <td><%= link_to building.postal_code %>, building</td>
-        <td><%= link_to building.country %>, building</td>
+        <td><%= link_to building.state, building %></td>
+        <td><%= link_to building.postal_code, building %></td>
+        <td><%= link_to building.country, building %></td>
         <td>
           <span class="badge">
             <%=  link_to building.reviews.count, building %>

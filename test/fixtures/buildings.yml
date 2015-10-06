@@ -8,7 +8,7 @@ one:
   city: MyString
   state: "CA"
   postal_code: "94534"
-  country: MyString
+  country: "US"
 
 two:
   street_name: MyString
@@ -18,7 +18,7 @@ two:
   city: MyString
   state: "AL"
   postal_code: "90000"
-  country: MyString
+  country: "ZZ"
 
 three:
   street_name: MyString
