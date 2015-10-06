@@ -3,8 +3,6 @@ require 'test_helper'
 class ReviewsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
-  # TODO: Add test for update
-
   def setup
     @review = reviews(:two)
     @user = users(:amber)
@@ -110,6 +108,21 @@ class ReviewsControllerTest < ActionController::TestCase
     end
   end
 
+  test 'update review if logged in' do
+    sign_in @user
+    update(5)
+    assert_redirected_to review_path, id: @review.id
+    assert Review.find(@review.id).overall_rating, 5
+  end
+
+  test 'no update review for invalid data' do
+    sign_in @user
+    update(6)
+    assert_select 'div#error_explanation'
+    assert Review.find(@review.id).overall_rating, 1
+  end
+
+
   private
 
   def create(rating)
@@ -125,5 +138,19 @@ class ReviewsControllerTest < ActionController::TestCase
                 },
        subject_id: buildings(:one)
   end
+
+  def update(rating)
+      patch :update, id: @review,
+                    review: { overall_rating:     rating,
+                              cleanliness_rating: rating,
+                              facilities_rating:  rating,
+                              location_rating:    rating,
+                              value_rating:       rating,
+                              headline:           'Headline',
+                              details:            'Details'
+                           },
+                    subject_id: buildings(:one)
+  end
+
 
 end

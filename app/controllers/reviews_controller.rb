@@ -4,8 +4,6 @@ class ReviewsController < ApplicationController
   before_action :user_logged_in, only: [:new, :create, :destroy, :edit]
   before_action :author_of_review?, only:[:edit, :destroy]
 
-  # TODO: Add delete capabilites
-
   def new
     @building = Building.find(params[:subject].to_i)
     @review = Review.new
