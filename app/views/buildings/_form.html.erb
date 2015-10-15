@@ -32,28 +32,59 @@
     <%= f.label :city %><br>
     <%= f.text_field :city %>
   </div>
+
   <div class="field">
+    <%= f.hidden_field :country, value: 'US' %>
+  </div>
+  <!-- <div class="field">
     <%= f.label :country %><br>
      <%= f.country_select :country,
                           { priority: %w(US CA),
-                            prompt: 'Please select a country'},
-                          {},
-                          { id: 'country_select' } %>
-  </div>
-  <div class="field">
+                            prompt: 'Please select a country'} %>
+  </div> -->
+
+  <!-- <div class="field">
     <%= f.label :state %><br>
     <%= f.text_field :state %>
-  </div>
-  <!-- <div class="states"
+  </div> -->
+
+  <div class="states">
   <%= render partial: 'subregion_select',
              locals: { parent_region: f.object.country, form: f} %>
-  /div> -->
+  </div>
 
   <div class="field">
     <%= f.label :postal_code %><br>
     <%= f.text_field :postal_code %>
   </div>
+
   <div class="btn">
     <%= f.submit class: "btn btn-primary" %>
   </div>
 <% end %>
+
+<!-- <script>
+  $(document).ready(function() {
+    $('#building_country').change(function() {
+      country = $(this).val();
+      $.ajax({
+        type: 'GET',
+        url: '/buildings/subregion_select',
+        contentType: 'json',
+        data: {parent_region: country},
+        success: function(json) {
+          alert('Worked ' +json);
+          console.log("*** Worked ***")
+        },
+        error: function(xhr, status, errorThrown) {
+          alert("Sorry there was a problem " + errorThrown);
+          console.log("status" + status);
+          console.log(Error)
+        },
+        complete: function () {
+          alert("Complete ");
+        }
+      });
+    });
+ });
+</script> -->

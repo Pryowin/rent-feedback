@@ -1,6 +1,8 @@
 class BuildingsController < ApplicationController
   include Sessions
 
+  respond_to :html, :js
+
   before_action :check_building, only: [:show, :edit, :update, :destroy]
   before_action :requires_authenticated_user,
                 only: [:new, :create, :edit, :update, :destroy]
@@ -75,6 +77,10 @@ class BuildingsController < ApplicationController
       format.html { redirect_to buildings_url, notice: 'Building destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def subregion_select
+    render partial: 'subregion_select'
   end
 
   private

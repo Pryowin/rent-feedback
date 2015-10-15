@@ -1,0 +1,12 @@
+<div class="field">
+<div id="state_code_wrapper">
+  <% parent_region ||= params[:parent_region] %>
+  <% country = Carmen::Country.coded(parent_region) %>
+  <% if !country.nil? && country.subregions? %>
+    <% @state_type = country.subregions.first.type %>
+    <% @state_type[0] = @state_type[0].upcase %>
+    <%= form.label  @state_type %><br />
+    <%= subregion_select(:building, :state, parent_region) %>
+  <% end %>
+</div>
+</div>

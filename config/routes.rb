@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :reviews
+  get '/buidlings/subregion_select' => 'buildings#subregion_select'
   resources :buildings
   devise_for :users
   get 'users/new'
@@ -11,6 +12,8 @@ Rails.application.routes.draw do
   get 'contact'    => 'static_pages#contact'
 
   resources :users
+
+
 
   # delete 'sign_out' => 'devise/sessions#destroy'
 

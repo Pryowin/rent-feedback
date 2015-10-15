@@ -6,8 +6,13 @@
   <p>
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search", :name => nil, class:"btn btn-primary" %>
-  </p>
+    <% if !current_user.nil? %>
+      <%= link_to 'Add Building', new_building_path,
+                  class: "btn btn-default right" %>
+    <% end %>
+    </p>
 <% end %>
+
 
   <%= will_paginate  %>
 
