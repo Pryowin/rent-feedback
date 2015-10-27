@@ -25,3 +25,6 @@
 
 # Ignore test coverage reports
 /coverage
+
+#ignore local environment settings
+/config/local_env.yml

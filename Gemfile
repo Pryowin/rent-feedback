@@ -26,6 +26,7 @@ gem 'devise'
 gem 'faker'
 gem 'obscenity'
 gem 'carmen-rails'
+gem 'httparty'
 
 group :development, :test do
   gem 'byebug'
