@@ -29,7 +29,8 @@ User.create!(name:                'Amber Burke',
                    building_number: Faker::Address.building_number,
                    state:           Faker::Address.state_abbr,
                    postal_code:     Faker::Address.zip,
-                   country:         'US'
+                   country:         'US',
+                   skip_validation: true
                   )
 end
 
@@ -39,7 +40,8 @@ end
                    city:            'Redding',
                    state:           'CA',
                    postal_code:     '96001',
-                   country:         'US'
+                   country:         'US',
+                   skip_validation: true
                   )
 end
 
@@ -49,7 +51,8 @@ end
                    city:            'Redding',
                    state:           'CA',
                    postal_code:     '96003',
-                   country:         'US'
+                   country:         'US',
+                   skip_validation: true
                   )
 end
 

@@ -17,13 +17,15 @@ class GoogleAddressValidation < ActiveModel::Validator
 
 
   def validate(record)
-    response = address_response(record.building_number,
+    unless record.skip_validation
+      response = address_response(record.building_number,
                                 record.street_name.strip,
                                 record.city.strip,
                                 record.state.strip,
                                 record.postal_code.strip,
                                 record.country.strip)
-    record.errors[:base] << response[ERROR_KEY] if response.key?(ERROR_KEY)
+      record.errors[:base] << response[ERROR_KEY] if response.key?(ERROR_KEY)
+    end
   end
 
   def address_response(bnum,street,city,state,zip,country)

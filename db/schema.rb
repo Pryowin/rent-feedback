@@ -11,19 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150929175157) do
+ActiveRecord::Schema.define(version: 20151030220109) do
 
   create_table "buildings", force: :cascade do |t|
     t.integer  "building_number"
-    t.string   "street_name",      null: false
+    t.string   "street_name",                      null: false
     t.string   "street_address_2"
     t.string   "street_address_3"
-    t.string   "city",             null: false
+    t.string   "city",                             null: false
     t.string   "state"
     t.string   "postal_code"
-    t.string   "country",          null: false
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.string   "country",                          null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.boolean  "skip_validation",  default: false
   end
 
   add_index "buildings", ["city"], name: "index_buildings_on_city"

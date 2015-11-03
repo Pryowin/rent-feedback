@@ -9,6 +9,7 @@ one:
   state: "CA"
   postal_code: "94534"
   country: "US"
+  skip_validation: true
 
 two:
   street_name: MyString
@@ -19,6 +20,7 @@ two:
   state: "AL"
   postal_code: "90000"
   country: "ZZ"
+  skip_validation: true
 
 three:
   street_name: MyString
@@ -29,3 +31,4 @@ three:
   state: "AL"
   postal_code: "90000"
   country: MyString
+  skip_validation: true
