@@ -41,14 +41,14 @@ class BuildingsControllerTest < ActionController::TestCase
   test 'should create building' do
     sign_in @user
     assert_difference('Building.count') do
-      create(@building.city)
+      create('Washington')
     end
     assert_redirected_to building_path(assigns(:building))
   end
 
   test 'should not create building if not logged in' do
     assert_no_difference('Building.count') do
-      create(@building.city)
+      create('Washington')
     end
     assert_redirected_to new_user_session_url
   end
@@ -133,13 +133,14 @@ class BuildingsControllerTest < ActionController::TestCase
   def create(city)
     post :create,
          building: { city: city,
-                     country: @building.country,
-                     postal_code: @building.postal_code,
-                     state: @building.state,
-                     street_address_3: @building.street_address_3,
-                     street_name: @building.street_name,
-                     building_number: @building.building_number,
-                     street_address_2: @building.street_address_2 }
+                     country: 'US',
+                     postal_code: '20500' ,
+                     state: 'DC',
+                     street_address_3: '',
+                     street_name: 'Pennsylvania Avenue' ,
+                     building_number: 1600,
+                     street_address_2: ''}
+
   end
 
   def update(city)
