@@ -128,6 +128,21 @@ class BuildingsControllerTest < ActionController::TestCase
     assert_redirected_to root_url
   end
 
+  test 'Do not create if address not found' do
+    sign_in @user
+    assert_no_difference 'Building.count' do
+      post :create,
+           building: { city: 'A',
+                       country: 'US',
+                       postal_code: 'A' ,
+                       state: 'A',
+                       street_address_3: 'A',
+                       street_name: 'A',
+                       building_number: 1,
+                       street_address_2: ''}
+     end
+  end
+
   private
 
   def create(city)

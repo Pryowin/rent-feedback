@@ -79,9 +79,7 @@ class BuildingsController < ApplicationController
     end
   end
 
-  def subregion_select
-    render partial: 'subregion_select'
-  end
+
 
   private
 
