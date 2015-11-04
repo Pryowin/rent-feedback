@@ -134,7 +134,11 @@ class ReviewsControllerTest < ActionController::TestCase
                   location_rating:    rating,
                   value_rating:       rating,
                   headline:           'Headline',
-                  details:            'Details'
+                  details:            'Details',
+                  from_year:          0,
+                  from_month:          0,
+                  to_year:          0,
+                  to_month:          0
                 },
        subject_id: buildings(:one)
   end

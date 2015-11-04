@@ -10,6 +10,10 @@ one:
   cleanliness_rating: 1
   headline: MyString
   details: MyText
+  from_month: 1
+  to_month: 1
+  from_year: 2015
+  to_year: 2015
 
 two:
   user: amber
@@ -21,6 +25,10 @@ two:
   cleanliness_rating: 1
   headline: MyString
   details: MyText
+  from_month: 1
+  to_month: 1
+  from_year: 2015
+  to_year: 2015
 
 <% 20.times do |n| %>
 review_#<%= n %>:
@@ -33,4 +41,8 @@ review_#<%= n %>:
   cleanliness_rating: 1
   headline: MyString
   details: MyText
+  from_month: 1
+  to_month: 1
+  from_year: 2015
+  to_year: 2015
 <% end %>

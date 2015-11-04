@@ -79,7 +79,11 @@ class ReviewsController < ApplicationController
                                    :cleanliness_rating,
                                    :location_rating,
                                    :facilities_rating,
-                                   :details)
+                                   :details,
+                                   :from_year,
+                                   :from_month,
+                                   :to_year,
+                                   :to_month)
   end
 
   def author_of_review?
