@@ -21,46 +21,20 @@ class ReviewTest < ActiveSupport::TestCase
     assert_not @review.valid?, 'Building does not exist'
   end
 
-  # OPTIMIZE: Deal with duplication of code
   test 'overall rating must be within range' do
-    @review.overall_rating = 0
-    assert_not @review.valid?, 'Rating too low'
-    @review.overall_rating = 6
-    assert_not @review.valid?, 'Rating too high'
-    @review.overall_rating = 3
-    assert @review.valid?, 'Rating in range'
+    rating_check("overall_rating")
   end
   test 'location rating must be within range' do
-    @review.location_rating = 0
-    assert_not @review.valid?, 'Rating too low'
-    @review.location_rating = 6
-    assert_not @review.valid?, 'Rating too high'
-    @review.location_rating = 3
-    assert @review.valid?, 'Rating in range'
+    rating_check("location_rating")
   end
   test 'value rating must be within range' do
-    @review.value_rating = 0
-    assert_not @review.valid?, 'Rating too low'
-    @review.value_rating = 6
-    assert_not @review.valid?, 'Rating too high'
-    @review.value_rating = 3
-    assert @review.valid?, 'Rating in range'
+    rating_check("value_rating")
   end
   test 'cleanliness rating must be within range' do
-    @review.cleanliness_rating = 0
-    assert_not @review.valid?, 'Rating too low'
-    @review.cleanliness_rating = 6
-    assert_not @review.valid?, 'Rating too high'
-    @review.cleanliness_rating = 3
-    assert @review.valid?, 'Rating in range'
+    rating_check("cleanliness_rating")
   end
   test 'facilities rating must be within range' do
-    @review.facilities_rating = 0
-    assert_not @review.valid?, 'Rating too low'
-    @review.facilities_rating = 6
-    assert_not @review.valid?, 'Rating too high'
-    @review.facilities_rating = 3
-    assert @review.valid?, 'Rating in range'
+    rating_check("facilities_rating")
   end
 
   test 'invalid headline' do
@@ -77,5 +51,16 @@ class ReviewTest < ActiveSupport::TestCase
     assert_not @review.valid?, 'Details profane'
     @review.details = ''
     assert_not @review.valid?, 'Details missing'
+  end
+
+  private
+
+  def rating_check(rating)
+      @review.send("#{rating}=", 0)
+      assert_not @review.valid?, 'Rating too low'
+      @review.send("#{rating}=", 6)
+      assert_not @review.valid?, 'Rating too high'
+      @review.send("#{rating}=", 3)
+      assert @review.valid?, 'Rating in range'
   end
 end

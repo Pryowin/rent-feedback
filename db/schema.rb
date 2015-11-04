@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151030220109) do
+ActiveRecord::Schema.define(version: 20151104181136) do
 
   create_table "buildings", force: :cascade do |t|
     t.integer  "building_number"
@@ -45,6 +45,10 @@ ActiveRecord::Schema.define(version: 20151030220109) do
     t.text     "details"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.integer  "from_month"
+    t.integer  "to_month"
+    t.integer  "from_year"
+    t.integer  "to_year"
   end
 
   add_index "reviews", ["author_id"], name: "index_reviews_on_author_id"
