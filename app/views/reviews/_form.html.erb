@@ -16,7 +16,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :headline %><br>
+    <h3>Headline</h3>
     <%= f.text_field :headline %>
   </div>
 
@@ -26,6 +26,7 @@
 
 
   <div class="daterange">
+    <h3>Rental Period</h3>
     <%= select_month(@review.from_month,
                      prompt: 'Start Month',
                      field_name: 'from_month') %>
@@ -45,30 +46,34 @@
   </div>
 
   <% ratings = ['',1,2,3,4,5] %>
-  <div class="field">
-    <%= f.label :overall_rating %>
-    <%= f.select :overall_rating, ratings %>
+  <h3>Ratings</h3>
+  <div class="Ratings">
+    <div class="field">
+      <%= f.select :overall_rating, ratings %>
+      <%= f.label :overall_rating %>
+    </div>
+    <div class="field">
+      <%= f.select :location_rating, ratings %>
+      <%= f.label :location_rating %>
+    </div>
+    <div class="field">
+      <%= f.select :value_rating, ratings %>
+      <%= f.label :value_rating %>
+    </div>
+    <div class="field">
+      <%= f.select :facilities_rating, ratings %>
+      <%= f.label :facilities_rating %>
+    </div>
+    <div class="field">
+      <%= f.select :cleanliness_rating, ratings %>
+      <%= f.label :cleanliness_rating %>
+    </div>
   </div>
   <div class="field">
-    <%= f.label :location_rating %>
-    <%= f.select :location_rating, ratings %>
-  </div>
-  <div class="field">
-    <%= f.label :value_rating %>
-    <%= f.select :value_rating, ratings %>
-  </div>
-  <div class="field">
-    <%= f.label :facilities_rating %>
-    <%= f.select :facilities_rating, ratings %>
-  </div>
-  <div class="field">
-    <%= f.label :cleanliness_rating %>
-    <%= f.select :cleanliness_rating, ratings %>
-  </div>
-  <div class="field">
-    <%= f.label :details %><br>
+    <h3>Details</h3>
     <%= f.text_area :details, size: "60x5" %>
   </div>
+
   <div class="btn">
     <%= f.submit class: "btn btn-primary" %>
   </div>
