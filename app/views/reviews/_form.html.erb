@@ -23,6 +23,26 @@
   <%# TODO: Add JS to show stars based on rating %>
   <%# TODO: Add Cancel button %>
   <%# TODO: Tidy up ratings display %>
+  <%# FIXME: Show current values in drop down%>
+
+  <div class="daterange">
+    <%= select_month(14, prompt: 'Start Month',
+                         field_name: 'from_month',
+                         default: 0) %>
+    <%= select_year(14, prompt: 'Start Year',
+                        start_year: 1990,
+                        end_year: Time.now.year,
+                        field_name: 'from_year',
+                        default: 0) %>
+    <%= select_month(14, prompt: 'End Month',
+                         field_name: 'to_month',
+                         default: 0) %>
+    <%= select_year(14, prompt: 'Start Year',
+                        start_year: 1990,
+                        end_year: Time.now.year,
+                        field_name: 'to_year',
+                        default: 0) %>
+  </div>
 
   <% ratings = ['',1,2,3,4,5] %>
   <div class="field">

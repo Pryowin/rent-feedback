@@ -16,7 +16,7 @@ class ReviewsController < ApplicationController
     redirect_to user_path, id:@author.id
   end
 
-  def edit
+  def edit 
     @review = Review.find(params[:id].to_i)
     @author = User.find(@review.author_id)
     @building = Building.find(@review.subject_id)
@@ -24,6 +24,10 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id].to_i)
+    @review.from_year = date_field(params[:date][:from_year])
+    @review.from_month = date_field(params[:date][:from_month])
+    @review.to_month = date_field(params[:date][:to_month])
+    @review.to_year = date_field(params[:date][:to_year])
     @building = Building.find(params[:subject_id])
     @author = current_user
     respond_to do |format|
@@ -50,6 +54,10 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
+    @review.from_year = date_field(params[:date][:from_year])
+    @review.from_month = date_field(params[:date][:from_month])
+    @review.to_month = date_field(params[:date][:to_month])
+    @review.to_year = date_field(params[:date][:to_year])
     @author = current_user
     @building = Building.find(params[:subject_id])
     @review.author_id = current_user.id
@@ -80,6 +88,7 @@ class ReviewsController < ApplicationController
                                    :location_rating,
                                    :facilities_rating,
                                    :details,
+                                   :date,
                                    :from_year,
                                    :from_month,
                                    :to_year,
@@ -98,4 +107,9 @@ class ReviewsController < ApplicationController
   def building_exists
     redirect_to root_url unless Building.exists?(params[:subject].to_i)
   end
+end
+
+def date_field(value)
+  return 0 if value.empty?
+  return value
 end
