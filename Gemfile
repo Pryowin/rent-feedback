@@ -47,5 +47,8 @@ group :production do
   gem 'puma'
 end
 
+gem 'geocoder'
+gem 'gmaps4rails'
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
