@@ -24,6 +24,11 @@ class BuildingsController < ApplicationController
   def show
     @building = Building.find(params[:id].to_i)
     @reviews = @building.reviews.paginate(page: params[:page])
+    @hash = Gmaps4rails.build_markers(@building) do |building, marker|
+      marker.lat building.latitude
+      marker.lng building.longitude
+      marker.title "#{building.building_number} #{building.street_name}"
+    end
   end
 
   # GET /buildings/new

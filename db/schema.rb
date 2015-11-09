@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151104181136) do
+ActiveRecord::Schema.define(version: 20151106182558) do
 
   create_table "buildings", force: :cascade do |t|
     t.integer  "building_number"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20151104181136) do
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.boolean  "skip_validation",  default: false
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "buildings", ["city"], name: "index_buildings_on_city"

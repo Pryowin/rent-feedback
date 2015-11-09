@@ -35,12 +35,12 @@
   <tbody>
     <% @buildings.each do |building| %>
       <tr>
-        <td><%= link_to building.building_number, building %></td>
-        <td><%= link_to building.street_name, building %></td>
-        <td><%= link_to building.city, building %></td>
-        <td><%= link_to building.state, building %></td>
-        <td><%= link_to building.postal_code, building %></td>
-        <td><%= link_to building.country, building %></td>
+        <td><%= link_to building.building_number, building, 'data-no-turbolink' => true %></td>
+        <td><%= link_to building.street_name, building, 'data-no-turbolink' => true %></td>
+        <td><%= link_to building.city, building,  'data-no-turbolink' => true %></td>
+        <td><%= link_to building.state, building,  'data-no-turbolink' => true %></td>
+        <td><%= link_to building.postal_code, building,  'data-no-turbolink' => true %></td>
+        <td><%= link_to building.country, building,  'data-no-turbolink' => true %></td>
         <td>
           <span class="badge">
             <%=  link_to building.reviews.count, building %>
