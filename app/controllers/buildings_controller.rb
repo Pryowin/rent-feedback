@@ -102,7 +102,9 @@ class BuildingsController < ApplicationController
                                      :city,
                                      :state,
                                      :postal_code,
-                                     :country)
+                                     :country,
+                                     :latitude,
+                                     :longitude)
   end
 
   def search_buildings(search)

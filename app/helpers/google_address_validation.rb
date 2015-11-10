@@ -17,14 +17,19 @@ class GoogleAddressValidation < ActiveModel::Validator
 
 
   def validate(record)
-    unless record.skip_validation
-      response = address_response(record.building_number,
+    return if record.skip_validation
+    @building = record
+    response = address_response(record.building_number,
                                 record.street_name.strip,
                                 record.city.strip,
                                 record.state.strip,
                                 record.postal_code.strip,
                                 record.country.strip)
-      record.errors[:base] << response[ERROR_KEY] if response.key?(ERROR_KEY)
+    if response.key?(ERROR_KEY)
+      record.errors[:base] << response[ERROR_KEY]
+    else
+      record.latitude = @building.latitude
+      record.longitude = @building.longitude
     end
   end
 
@@ -58,6 +63,7 @@ class GoogleAddressValidation < ActiveModel::Validator
       @address_hash[ERROR_KEY] = INVALID_ADDRESS
       return
     end
+    find_lat_long(addr_comp)
     @address_hash = create_hash(addr_comp[ADDR_COMP])
     @types =  address_types(addr_comp[ADDR_COMP])
   end
@@ -92,5 +98,9 @@ class GoogleAddressValidation < ActiveModel::Validator
     @address_hash[ERROR_KEY] = error_text unless error_text == ''
   end
 
+  def find_lat_long(addr_comp)
+    @building.latitude = addr_comp["geometry"]["location"]["lat"]
+    @building.longitude = addr_comp["geometry"]["location"]["lng"]
+  end
 
 end
