@@ -6,9 +6,9 @@
 <div class="row">
   <aside class="col-md-4">
     <%= render @building %>
-
-    <%= render 'map' %>
-
+    <% unless @building.skip_validation %>
+      <%= render 'map' %>
+    <% end %>
   </aside>
 
   <div class="col-md-8">
