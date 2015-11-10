@@ -1,14 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user_id: 1
+  user_id: 127326141
   building_id: 1
-  postal_code: MyString
-  city: MyString
-  active: false
+
+
 
 two:
-  user_id: 1
+  user_id: 127326141
   building_id: 1
   postal_code: MyString
   city: MyString
