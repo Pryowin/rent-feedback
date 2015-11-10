@@ -21,4 +21,10 @@ class Building < ActiveRecord::Base
     return self.state if @country.subregions.coded(self.state).nil?
     @country.subregions.coded(self.state)
   end
+
+  def check_subscription(user_id)
+    subscription = Subscription.where("user_id = ? and building_id = ?",user_id,id).first
+    return {exists: true, active: subscription.active} unless subscription.nil?
+    return {exists: false, active: false}
+  end
 end
