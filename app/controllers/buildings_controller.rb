@@ -84,6 +84,28 @@ class BuildingsController < ApplicationController
     end
   end
 
+  def subscribe
+    @subscription = Subscription.new
+    @subscription.building_id = params[:id].to_i
+    @subscription.user_id = current_user.id
+    @subscription.save
+    respond_to do |format|
+      format.html do
+        render :partial => "subscribe"
+      end
+    end
+  end
+
+  def unsubscribe
+    @subscription = Subscription.find(params[:subscription_id].to_i)
+    @subscription.destroy
+    respond_to do |format|
+      format.html do
+        render :partial => "subscribe"
+      end
+    end
+  end
+
 
 
   private

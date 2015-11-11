@@ -6,6 +6,7 @@ class BuildingTest < ActiveSupport::TestCase
       @building = buildings(:one)
       @user = users(:david)
       @other_user = users(:amber)
+      @nosub_user = users(:schrodie)
   end
 
   test 'Provides Country Name' do
@@ -41,16 +42,16 @@ class BuildingTest < ActiveSupport::TestCase
 
   test 'Check Active Subscription' do
     create_subscription(true)
-    user_subscription = @building.check_subscription(@user.id)
+    user_subscription = @building.check_subscription(@other_user.id)
     assert_equal user_subscription[:exists],true, 'Sub should exist'
     assert_equal user_subscription[:active],true, 'Sub should be active'
-    user_subscription = @building.check_subscription(@other_user.id)
+    user_subscription = @building.check_subscription(@nosub_user.id)
     assert_equal user_subscription[:exists],false,'Sub should not exist'
   end
 
   test 'Check InActive Subscription' do
     create_subscription(false)
-    user_subscription = @building.check_subscription(@user.id)
+    user_subscription = @building.check_subscription(@other_user.id)
     assert_equal user_subscription[:exists],true, 'Sub should exist'
     assert_equal user_subscription[:active],false, 'Sub should be active'
   end
@@ -58,7 +59,7 @@ class BuildingTest < ActiveSupport::TestCase
   def create_subscription(active)
     @subscription = Subscription.new
     @subscription.building_id = @building.id
-    @subscription.user_id = @user.id
+    @subscription.user_id = @other_user.id
     @subscription.active = active
     assert @subscription.valid?, 'Subsciption should be valid'
     @subscription.save

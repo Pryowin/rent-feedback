@@ -13,6 +13,13 @@ Rails.application.routes.draw do
 
   resources :users
 
+  resources :buildings do
+    resources :subscriptions, only: [:post, :delete] do
+      post 'subscribe', controller: 'buildings', on: :collection
+      delete 'unsubscribe', controller: 'buildings'
+    end
+  end
+
 
 
   # delete 'sign_out' => 'devise/sessions#destroy'

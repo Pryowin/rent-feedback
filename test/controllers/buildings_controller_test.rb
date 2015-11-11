@@ -143,6 +143,21 @@ class BuildingsControllerTest < ActionController::TestCase
      end
   end
 
+  test 'Subscribe should increase number of subscriptions' do
+    sign_in @user
+    assert_difference('Subscription.count',1) do
+      post :subscribe, building_id: @building.id
+    end
+  end
+
+  test 'UnSubscribe should decrease number of subscriptions' do
+    sign_in @admin
+    sub_id = @building.check_subscription(@admin.id)[:id]
+    assert_difference('Subscription.count',-1) do
+      delete :unsubscribe, building_id: @building.id, subscription_id: sub_id
+    end
+  end
+
   private
 
   def create(city)

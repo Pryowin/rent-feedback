@@ -24,7 +24,7 @@ class Building < ActiveRecord::Base
 
   def check_subscription(user_id)
     subscription = Subscription.where("user_id = ? and building_id = ?",user_id,id).first
-    return {exists: true, active: subscription.active} unless subscription.nil?
+    return {exists: true, active: subscription.active, id: subscription.id} unless subscription.nil?
     return {exists: false, active: false}
   end
 end
