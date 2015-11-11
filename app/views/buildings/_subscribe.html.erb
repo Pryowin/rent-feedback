@@ -1,0 +1,12 @@
+<% if @sub_check[:exists] %>
+  <%= link_to 'Unsubscribe',
+                building_subscription_unsubscribe_path(building_id: @building.id,
+                                                      subscription_id: @sub_check[:id]),
+                method: :delete,
+                class: "btn btn-warning" %>
+<% else %>
+  <%= link_to 'Subscribe',
+              subscribe_building_subscriptions_path(building_id: @building),
+              method: :post,
+              class: "btn btn-default" %>
+<% end %>

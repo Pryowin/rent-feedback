@@ -24,6 +24,7 @@ class BuildingsController < ApplicationController
   def show
     @building = Building.find(params[:id].to_i)
     @reviews = @building.reviews.paginate(page: params[:page])
+    @sub_check = @building.check_subscription(current_user.id) unless current_user.nil?
     @hash = Gmaps4rails.build_markers(@building) do |building, marker|
       marker.lat building.latitude
       marker.lng building.longitude
@@ -85,24 +86,22 @@ class BuildingsController < ApplicationController
   end
 
   def subscribe
+    @building = Building.find(params[:building_id].to_i)
     @subscription = Subscription.new
-    @subscription.building_id = params[:id].to_i
+    @subscription.building_id = @building.id
     @subscription.user_id = current_user.id
     @subscription.save
     respond_to do |format|
-      format.html do
-        render :partial => "subscribe"
-      end
+        format.html {  redirect_to @building}
     end
   end
 
   def unsubscribe
+    @building = Building.find(params[:building_id].to_i)
     @subscription = Subscription.find(params[:subscription_id].to_i)
     @subscription.destroy
     respond_to do |format|
-      format.html do
-        render :partial => "subscribe"
-      end
+      format.html {  redirect_to @building}
     end
   end
 

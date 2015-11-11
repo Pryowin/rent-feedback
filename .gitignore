@@ -31,3 +31,5 @@
 
 #ignore brakeman ignore settings
 /config/brakeman.ignore
+
+/.byebug_history
